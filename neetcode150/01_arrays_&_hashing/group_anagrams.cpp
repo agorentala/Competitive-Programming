@@ -3,18 +3,20 @@
 #include "unordered_map"
 #include "algorithm"
 
+using namespace std;
+
 class Solution {
 public:
-    std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string> &strs) {
-        std::unordered_map<std::string, std::vector<std::string>> groups;
-        std::string key;
-        for (std::string &str: strs) {
+    vector<vector<string>> groupAnagrams(vector<string> &strs) {
+        unordered_map<string, vector<string>> groups;
+        string key;
+        for (string &str: strs) {
             key = str;
-            std::sort(key.begin(), key.end());
+            sort(key.begin(), key.end());
             groups[key].push_back(str);
         }
 
-        std::vector<std::vector<std::string>> ret;
+        vector<vector<string>> ret;
         for (auto &group: groups) {
             ret.push_back(group.second);
         }

@@ -1,9 +1,11 @@
 #include <string>
 #include <iostream>
 
+using namespace std;
+
 class Solution {
 public:
-    bool isAnagram(std::string s, std::string t) {
+    bool isAnagram(string s, string t) {
         if (s == t) {
             return true;
         }
@@ -30,6 +32,6 @@ public:
 
 int main() {
     Solution solve;
-    std::cout << solve.isAnagram("gaming", "jaming");
-    std::cout << solve.isAnagram("gaming", "maging");
+    cout << solve.isAnagram("gaming", "jaming");
+    cout << solve.isAnagram("gaming", "maging");
 }
