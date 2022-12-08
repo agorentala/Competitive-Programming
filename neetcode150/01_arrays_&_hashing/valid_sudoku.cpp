@@ -7,23 +7,28 @@ using namespace std;
 class Solution {
 public:
     bool isValidSudoku(vector<vector<char>> &board) {
-        unordered_map<int, unordered_set<char>> rows;
-        unordered_map<int, unordered_set<char>> cols;
-        unordered_map<int, unordered_set<char>> boxes;
+        bool rows[9][9] = {false};
+        bool cols[9][9] = {false};
+        bool boxes[9][9] = {false};
 
         char cur;
+        int ind;
+        int box;
         for (int i = 0; i < 9; ++i) {
             for (int j = 0; j < 9; ++j) {
                 cur = board[i][j];
                 if (cur == '.') {
                     continue;
                 }
-                if (rows[i].count(cur) || cols[j].count(cur) || boxes[(3 * (i / 3)) + (j / 3)].count(cur)) {
+
+                ind = cur - '1';
+                box = (i / 3) * 3 + (j / 3);
+                if (rows[i][ind] || cols[j][ind] || boxes[box][ind]) {
                     return false;
                 }
-                rows[i].insert(cur);
-                cols[j].insert(cur);
-                boxes[(3 * (i / 3)) + (j / 3)].insert(cur);
+                rows[i][ind] = true;
+                cols[j][ind] = true;
+                boxes[box][ind] = true;
             }
         }
         return true;
